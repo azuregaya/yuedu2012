@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>页面标题</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link type="text/css" rel="stylesheet" href="../css/mobi.css"/>
+<style>
+.box1{width:100px;height:50px;background-color: red;}
+</style>
+</head>
+<body id="page-163-com">
+	<div class="g-doc">
+		<div class="g-inner">
+			<div class="m-logo-1">
+				<h1>网易云阅读</h1>
+			</div>
+			
+			<div class="m-recharge">
+				<form id="J_Form">
+				<p><label>充值帐号：</label><span>azuregaya@163.com</span></p>
+				<p><label>账户余额：</label><span><em>0</em>丁丁币</span></p>
+				<p><label>输入金额：</label><input id="J_Num" type="number" />元</p>
+				<b>比率：1元=100丁丁币</b>
+
+				<p><a id="J_OK" class="button">同意协议并充值</a></p>
+				<p>请阅读<a href="#">《网易云阅读平台服务协议》</a></p>
+				</form>
+			</div>
+		</div>
+		
+	</div>
+<script>
+var iw = window.innerWidth, ih = window.innerHeight, ow = window.outerWidth, oh = window.outerHeight;
+
+var offw = document.documentElement.offsetWidth,offh = document.documentElement.offsetHeight;
+
+var cw = document.documentElement.clientWidth, ch = document.documentElement.clientHeight;
+
+var dpr = window.devicePixelRatio;
+
+var sw = screen.width; sh = screen.height;
+
+var maxw = ih;
+
+(function(){
+	var ipt = document.getElementById('J_Num'),btn = document.getElementById('J_OK'),isOK = false;
+
+	var amountCheck = (function(){
+		var reg = /^[+]?[\d]+(([\.]{1}[\d]+)|([\d]*))$/,
+			reg1 = /^\+?[1-9][0-9]*$/,
+			reg2 = /^\d+\.\d{2}$/,
+			reg3 = /^\d+\.\d{1}$/;
+
+		return {
+			ifNum : function(val){
+				if(( reg1.test(val) || reg2.test(val) || reg3.test(val)) && val != 0){
+					isOK = true;
+					return;
+				}else{
+					alert('金额必须为正整数或小数，小数点后不超过2位');
+					ipt.value = '';
+					isOK = false;
+				}
+			}
+		}
+	})();
+
+
+	var eventBind = function(){
+		ipt.addEventListener('blur',function(){
+			amountCheck.ifNum(this.value);
+		},false)
+
+		btn.addEventListener('click',function(){
+			amountCheck.ifNum(ipt.value);
+			if(isOK){
+				document.getElementById('J_Form').submit(); // 提交表单
+			}
+		},false);
+	};
+
+	eventBind();
+})();
+
+
+</script>
+<script src="http://192.168.146.82:8081/target/target-script.js"></script>
+</body>
+</html>

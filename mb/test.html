@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=gbk" />
+<meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no" />
+<style>
+body{margin:0;padding:0;}
+@media only screen and (min-device-width: 320px){
+	body{background-color:red;}
+}
+</style>
+</head>
+<body>
+<div>
+	<img src="img/m320.jpg" style="max-width:320px;"/>
+</div>
+<script type="text/javascript">
+(function(){
+	var pageWidth = window.outerWidth,pageHeight = window.outerHeight;
+	var screenW = screen.width,screenH = screen.height,screenAW = screen.availWidth,screenAH = screen.availHeight;
+
+	//document.write(window.devicePixelRatio);
+	document.write(navigator.userAgent.toLowerCase());
+})();
+</script>
+
+</body>
+</html>
